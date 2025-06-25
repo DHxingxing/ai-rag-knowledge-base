@@ -1,1 +1,0 @@
-package org.iflytek.ai.rag.dev.trigger;

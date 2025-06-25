@@ -15,9 +15,8 @@
     <version>1.0-SNAPSHOT</version>
     <packaging>pom</packaging>
     <modules>
-        <module>ai-rag-dev-api</module>
-        <module>ai-rag-dev-app</module>
-        <module>ai-rag-dev-trigger</module>
+        <module>ai-rag-dev</module>
+        <module>ai-rag-dev-fronted</module>
     </modules>
 
 

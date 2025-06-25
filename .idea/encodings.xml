@@ -2,9 +2,15 @@
 <project version="4">
   <component name="Encoding">
     <file url="file://$PROJECT_DIR$/ai-rag-dev-api/src/main/java" charset="UTF-8" />
-    <file url="file://$PROJECT_DIR$/ai-rag-dev-app/src/main/java" charset="UTF-8" />
-    <file url="file://$PROJECT_DIR$/ai-rag-dev-trigger/src/main/java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/ai-rag-dev-application/src/main/java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/ai-rag-dev-common/src/main/java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/ai-rag-dev-domain/src/main/java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/ai-rag-dev-fronted/src/main/java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/ai-rag-dev-infrastructure/src/main/java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/ai-rag-dev-interface/src/main/java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/ai-rag-dev/src/main/java" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/src/main/java" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/src/main/resources" charset="UTF-8" />
+    <file url="file:///src/main/java" charset="UTF-8" />
   </component>
 </project>

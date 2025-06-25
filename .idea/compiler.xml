@@ -2,21 +2,34 @@
 <project version="4">
   <component name="CompilerConfiguration">
     <annotationProcessing>
+      <profile default="true" name="Default" enabled="true" />
       <profile name="Maven default annotation processors profile" enabled="true">
         <sourceOutputDir name="target/generated-sources/annotations" />
         <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
         <outputRelativeToContentRoot value="true" />
-        <module name="ai-rag-dev-app" />
-        <module name="ai-rag-dev-api" />
-        <module name="ai-rag-dev-trigger" />
+        <module name="ai-rag-dev" />
+        <module name="ai-rag-dev-fronted" />
       </profile>
     </annotationProcessing>
+    <bytecodeTargetLevel>
+      <module name="ai-rag-dev-api" target="17" />
+      <module name="ai-rag-dev-application" target="17" />
+      <module name="ai-rag-dev-common" target="17" />
+      <module name="ai-rag-dev-domain" target="17" />
+      <module name="ai-rag-dev-infrastructure" target="17" />
+      <module name="ai-rag-dev-interface" target="17" />
+    </bytecodeTargetLevel>
   </component>
   <component name="JavacSettings">
     <option name="ADDITIONAL_OPTIONS_OVERRIDE">
+      <module name="ai-rag-dev" options="-parameters" />
       <module name="ai-rag-dev-api" options="-parameters" />
-      <module name="ai-rag-dev-app" options="-parameters" />
-      <module name="ai-rag-dev-trigger" options="-parameters" />
+      <module name="ai-rag-dev-application" options="-parameters" />
+      <module name="ai-rag-dev-common" options="-parameters" />
+      <module name="ai-rag-dev-domain" options="-parameters" />
+      <module name="ai-rag-dev-fronted" options="-parameters" />
+      <module name="ai-rag-dev-infrastructure" options="-parameters" />
+      <module name="ai-rag-dev-interface" options="-parameters" />
     </option>
   </component>
 </project>
