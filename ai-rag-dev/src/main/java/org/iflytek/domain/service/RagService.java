@@ -23,4 +23,6 @@ package org.iflytek.domain.service;
  */
 public interface RagService {
 
+    String chatWithRag(String filePath, String message);
+
 }

@@ -61,3 +61,13 @@ logging:
   level:
     root: info
   config: classpath:logback-spring.xml
+
+rag:
+  prompt:
+    system: |
+      Use the information from the DOCUMENTS section to provide accurate answers but act as
+      If unsure, simply state that you don't know.
+      Another thing you need to note is that your reply must be in Chinese!
+      DOCUMENTS:
+      {documents}
+    user: "请基于以下文档回答问题：{question}"
