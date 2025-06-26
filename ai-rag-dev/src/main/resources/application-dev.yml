@@ -29,6 +29,8 @@ spring:
   ai:
     ollama:
       base-url: http://127.0.0.1:11434
+      chat:
+        model: phi3:mini
       embedding:
         options:
           num-batch: 512

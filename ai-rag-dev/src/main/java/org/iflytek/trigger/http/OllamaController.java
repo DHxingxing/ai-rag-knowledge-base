@@ -3,11 +3,9 @@ package org.iflytek.trigger.http;
 import jakarta.annotation.Resource;
 import org.iflytek.domain.service.IAiService;
 import org.iflytek.domain.service.RagService;
+import org.iflytek.domain.common.response.Response;
 import org.springframework.ai.chat.ChatResponse;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 import reactor.core.publisher.Flux;
 
 
@@ -31,7 +29,7 @@ public class OllamaController{
     }
 
     @GetMapping("rag")
-    public String chatWithRag(){
-        return ragService.chatWithRag("/Users/haisen/PostGraduate Folder/实习/个人项目/DeepSeekRAGEnforceKnowledgeBase/ai-rag-dev/src/main/java/org/iflytek/domain/service/data/data1.md","花猪的手机号是？");
+    public Response<String> chatWithRag(@RequestParam String model, @RequestParam String message) {
+        return ragService.chatWithRag("data/data1.md",model, message);
     }
 }

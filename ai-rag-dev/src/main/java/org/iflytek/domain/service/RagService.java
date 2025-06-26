@@ -12,17 +12,27 @@
 package org.iflytek.domain.service;
 
 
+import org.iflytek.domain.common.response.Response;
+import org.springframework.web.multipart.MultipartFile;
+
+import java.util.List;
+
 /**
  * RAG应用服务接口
  * 
  * 定义RAG系统的应用层业务操作，协调领域服务和基础设施。
  * 应用服务是薄服务，只负责业务流程的编排，不包含具体的业务规则。
  * 
- * @author 小傅哥
- * @since 2024
+ * @author hxdu5
  */
+
+
 public interface RagService {
 
-    String chatWithRag(String filePath, String message);
+    Response<List<String>> ragModelList();
+
+    Response<String> uploadFile(String ragTag, List<MultipartFile> files);
+
+    Response<String> chatWithRag(String filePath, String model, String message);
 
 }
