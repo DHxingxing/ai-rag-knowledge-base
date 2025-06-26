@@ -35,9 +35,15 @@ public class Response<T> implements Serializable {
         return new Response<>("200", "success", data);
     }
 
+    public static <T> Response<T> success(String msg) {
+        return new Response<>("200", msg, null);
+    }
+
     public static <T> Response<T> error(String code, String msg) {
         return new Response<>(code, msg, null);
     }
 
-    
+    public static <T> Response<T> error(String msg) {
+        return new Response<>("500", msg, null);
+    }
 }
