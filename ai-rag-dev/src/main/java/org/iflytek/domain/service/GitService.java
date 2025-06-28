@@ -4,7 +4,7 @@ import org.eclipse.jgit.api.Git;
 import org.eclipse.jgit.api.errors.GitAPIException;
 import org.iflytek.domain.request.UserBaseReq;
 
-import java.nio.file.Files;
+import java.nio.file.FileVisitResult;
 
 /**
  * @author hxdu5
@@ -16,5 +16,5 @@ public interface GitService {
 
     String analyzeGithubBase(UserBaseReq userBaseReq) throws GitAPIException;
 
-    FileVisitResult
+    FileVisitResult visitLocalBase(String path, String projectName) throws GitAPIException;
 }
