@@ -73,3 +73,8 @@ rag:
       DOCUMENTS:
       {documents}
     user: "请基于以下文档回答问题：{question}"
+
+file:
+  unzip:
+    temp: /Users/haisen/PostGraduate Folder/实习/个人项目/temp
+    local: /Users/haisen/PostGraduate Folder/实习/个人项目/lcoal

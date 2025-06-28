@@ -13,7 +13,11 @@ package org.iflytek.domain.service;
 
 
 import org.iflytek.domain.common.response.Response;
+import org.iflytek.domain.request.ChatInfoReq;
+import org.iflytek.domain.request.UserBaseReq;
+import org.springframework.ai.chat.ChatResponse;
 import org.springframework.web.multipart.MultipartFile;
+import reactor.core.publisher.Flux;
 
 import java.util.List;
 
@@ -29,10 +33,36 @@ import java.util.List;
 
 public interface RagService {
 
+    void uploadFile(String filePath, String ragTag);
+    /**
+     *
+     * @return
+     */
     Response<List<String>> ragModelList();
 
-    Response<String> uploadFile(String ragTag, List<MultipartFile> files);
+    /**
+     *
+     * @param ragTag
+     * @param files
+     * @return
+     */
+    Response<String> uploadFile(String ragTag, MultipartFile files);
 
-    Response<String> chatWithRag(String filePath, String model, String message);
+    /**
+     *
+     * @param ragTag
+     * @param model
+     * @param message
+     * @return
+     */
+    Flux<ChatResponse> chatWithRag(String ragTag, ChatInfoReq chatInfoReq);
 
+    /**
+     *
+     * @param url
+     * @param userName
+     * @param token
+     * @return
+     */
+    String analyzeGithubBase(UserBaseReq userBaseReq);
 }
