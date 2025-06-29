@@ -14,7 +14,6 @@ package org.iflytek.domain.service;
 
 import org.iflytek.domain.common.response.Response;
 import org.iflytek.domain.request.ChatInfoReq;
-import org.iflytek.domain.request.UserBaseReq;
 import org.springframework.ai.chat.ChatResponse;
 import org.springframework.web.multipart.MultipartFile;
 import reactor.core.publisher.Flux;
@@ -48,13 +47,7 @@ public interface RagService {
      */
     Response<String> uploadFile(String ragTag, MultipartFile files);
 
-    /**
-     *
-     * @param ragTag
-     * @param model
-     * @param message
-     * @return
-     */
+
     Flux<ChatResponse> chatWithRag(String ragTag, ChatInfoReq chatInfoReq);
 
     /**
@@ -64,5 +57,4 @@ public interface RagService {
      * @param token
      * @return
      */
-    String analyzeGithubBase(UserBaseReq userBaseReq);
 }

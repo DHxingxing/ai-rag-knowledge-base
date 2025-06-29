@@ -42,34 +42,31 @@ public class GitServiceImpl implements GitService{
 
     @Override
     public String analyzeGithubBase(UserBaseReq userBaseReq) {
+
+        String projectName = extractProjectName(userBaseReq.getUrl());
+        int[] fileCount = {0};
+
         try (Git git = cloneBase(userBaseReq)) {
-
-
-            // 你的业务逻辑
-        } catch (Exception e) {
-            log.error("克隆Git仓库失败: {}", e.getMessage(), e);
-            throw new RuntimeException("<UNK>" + e.getMessage());
-        }
-        return "";
-
-    }
-
-    @Override
-    public FileVisitResult visitLocalBase(String path, String projectName) throws GitAPIException {
-        try {
-            Files.walkFileTree(Paths.get(path), new SimpleFileVisitor<>() {
+            Files.walkFileTree(Paths.get(userBaseReq.getLocalPath()), new SimpleFileVisitor<>() {
                 @Override
                 public FileVisitResult visitFile(Path file, BasicFileAttributes attrs) throws IOException {
                     List<Document> documents = fileProgressService.setMetaData(file.toString(), projectName);
                     pgVectorStore.accept(documents);
+                    fileCount[0]++;
                     return FileVisitResult.CONTINUE;
                 }
             });
-            return FileVisitResult.CONTINUE;
+            return String.format("项目[%s]分析完成，共处理文件数：%d", projectName, fileCount[0]);
         } catch (Exception e) {
-            log.error("遍历本地目录失败: {}", e.getMessage(), e);
-            return FileVisitResult.TERMINATE;
+            log.error("克隆Git仓库失败: {}", e.getMessage(), e);
+            throw new RuntimeException("<UNK>" + e.getMessage());
         }
+    }
+
+    private String extractProjectName(String repoUrl) {
+        String[] parts = repoUrl.split("/");
+        String projectNameWithGit = parts[parts.length - 1];
+        return projectNameWithGit.replace(".git", "");
     }
 
 }

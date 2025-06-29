@@ -16,5 +16,4 @@ public interface GitService {
 
     String analyzeGithubBase(UserBaseReq userBaseReq) throws GitAPIException;
 
-    FileVisitResult visitLocalBase(String path, String projectName) throws GitAPIException;
 }

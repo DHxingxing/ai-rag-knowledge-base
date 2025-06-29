@@ -1,7 +1,10 @@
 package org.iflytek.trigger.http;
 
 import jakarta.annotation.Resource;
+import org.eclipse.jgit.api.errors.GitAPIException;
+import org.iflytek.application.service.ChatService;
 import org.iflytek.domain.request.ChatInfoReq;
+import org.iflytek.domain.request.GithubBaseChatReq;
 import org.iflytek.domain.request.UserBaseReq;
 import org.iflytek.domain.service.IAiService;
 import org.iflytek.domain.service.RagService;
@@ -19,6 +22,8 @@ public class OllamaController{
     private IAiService aiService;
     @Resource
     RagService ragService;
+    @Resource
+    ChatService chatService;
     
     @GetMapping("generate")
     public ChatResponse generate(@RequestParam ChatInfoReq chatInfoReq) {
@@ -40,8 +45,8 @@ public class OllamaController{
         return ragService.chatWithRag(ragTag,chatInfoReq);
     }
 
-    @PostMapping("analyze_github_base")
-    public String analyzeGithubBase(UserBaseReq userBaseReq) {
-        return ragService.analyzeGithubBase(userBaseReq);
+    @PostMapping("rag_GithubBase")
+    public Flux<ChatResponse> chatWithGithubBaseRag(@RequestBody GithubBaseChatReq githubBaseChatReq) throws GitAPIException {
+        return chatService.chatWithGithubBaseRag(githubBaseChatReq);
     }
 }

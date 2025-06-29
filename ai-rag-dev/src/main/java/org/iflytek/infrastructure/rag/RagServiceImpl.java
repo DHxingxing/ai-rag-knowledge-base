@@ -2,12 +2,9 @@ package org.iflytek.infrastructure.rag;
 
 import jakarta.annotation.Resource;
 import lombok.extern.slf4j.Slf4j;
-import org.eclipse.jgit.api.Git;
 import org.iflytek.domain.common.response.Response;
 import org.iflytek.domain.request.ChatInfoReq;
-import org.iflytek.domain.request.UserBaseReq;
 import org.iflytek.domain.service.FileProgressService;
-import org.iflytek.domain.service.GitService;
 import org.iflytek.domain.service.IAiService;
 import org.iflytek.domain.service.RagService;
 import org.iflytek.domain.utils.ZipUtil;
@@ -15,11 +12,8 @@ import org.iflytek.infrastructure.config.RagPromptConfig;
 import org.iflytek.infrastructure.config.UnZipConfig;
 import org.springframework.ai.chat.ChatResponse;
 import org.springframework.ai.document.Document;
-import org.springframework.ai.reader.tika.TikaDocumentReader;
-import org.springframework.ai.transformer.splitter.TokenTextSplitter;
 import org.springframework.ai.vectorstore.PgVectorStore;
 import org.springframework.ai.vectorstore.SearchRequest;
-import org.springframework.core.io.FileSystemResource;
 import org.springframework.stereotype.Service;
 import org.springframework.web.multipart.MultipartFile;
 import reactor.core.publisher.Flux;
@@ -33,8 +27,6 @@ import java.util.stream.Collectors;
 public class RagServiceImpl implements RagService {
 
     @Resource
-    TokenTextSplitter tokenTextSplitter;
-    @Resource
     PgVectorStore pgVectorStore;
     @Resource
     RagPromptConfig ragPromptConfig;
@@ -42,8 +34,6 @@ public class RagServiceImpl implements RagService {
     UnZipConfig unZipConfig;
     @Resource
     IAiService iaiService;
-    @Resource
-    GitService gitService;
     @Resource
     FileProgressService fileProgressService;
 
@@ -89,4 +79,5 @@ public class RagServiceImpl implements RagService {
         ChatInfoReq chatInfoNewReqRag = ChatInfoReq.generateNewInfoRag(chatInfoReq, documentCollectors, ragPromptConfig);
         return iaiService.generateStream(chatInfoNewReqRag);
     }
+
 }
