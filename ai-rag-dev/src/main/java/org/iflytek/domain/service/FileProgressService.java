@@ -2,6 +2,7 @@ package org.iflytek.domain.service;
 
 import org.springframework.ai.document.Document;
 
+import java.io.IOException;
 import java.util.List;
 
 /**
@@ -10,5 +11,5 @@ import java.util.List;
  */
 public interface FileProgressService {
 
-    List<Document> setMetaData(String path, String ragTag);
+    List<Document> setMetaData(String path, String ragTag) throws IOException;
 }

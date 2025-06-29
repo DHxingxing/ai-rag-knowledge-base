@@ -18,6 +18,7 @@ import org.springframework.ai.chat.ChatResponse;
 import org.springframework.web.multipart.MultipartFile;
 import reactor.core.publisher.Flux;
 
+import java.io.IOException;
 import java.util.List;
 
 /**
@@ -32,7 +33,7 @@ import java.util.List;
 
 public interface RagService {
 
-    void uploadFile(String filePath, String ragTag);
+    void uploadFile(String filePath, String ragTag) throws IOException;
     /**
      *
      * @return

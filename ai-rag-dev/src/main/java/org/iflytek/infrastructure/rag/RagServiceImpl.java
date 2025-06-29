@@ -38,7 +38,7 @@ public class RagServiceImpl implements RagService {
     FileProgressService fileProgressService;
 
     @Override
-    public void uploadFile(String filePath, String ragTag) {
+    public void uploadFile(String filePath, String ragTag) throws IOException {
         List<Document> documents = fileProgressService.setMetaData(filePath, ragTag);
         pgVectorStore.accept(documents);
     }

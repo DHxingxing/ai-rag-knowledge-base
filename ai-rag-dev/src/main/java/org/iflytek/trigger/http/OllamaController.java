@@ -10,9 +10,12 @@ import org.iflytek.domain.service.IAiService;
 import org.iflytek.domain.service.RagService;
 import org.iflytek.domain.common.response.Response;
 import org.springframework.ai.chat.ChatResponse;
+import org.springframework.http.codec.ServerSentEvent;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
 import reactor.core.publisher.Flux;
+
+import java.io.IOException;
 
 @RestController
 @RequestMapping("/api/v1/ollama")
@@ -46,7 +49,7 @@ public class OllamaController{
     }
 
     @PostMapping("rag_GithubBase")
-    public Flux<ChatResponse> chatWithGithubBaseRag(@RequestBody GithubBaseChatReq githubBaseChatReq) throws GitAPIException {
+    public Flux<ServerSentEvent<String>> chatWithGithubBaseRag(@RequestBody GithubBaseChatReq githubBaseChatReq) throws GitAPIException, IOException {
         return chatService.chatWithGithubBaseRag(githubBaseChatReq);
     }
 }
