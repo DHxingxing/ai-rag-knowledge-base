@@ -50,6 +50,7 @@ public class GitServiceImpl implements GitService{
             Files.walkFileTree(Paths.get(userBaseReq.getLocalPath()), new SimpleFileVisitor<>() {
                 @Override
                 public FileVisitResult visitFile(Path file, BasicFileAttributes attrs) throws IOException {
+                    //todo 这里存在content 为null 的情况
                     List<Document> documents = fileProgressService.setMetaData(file.toString(), projectName);
                     pgVectorStore.accept(documents);
                     fileCount[0]++;
