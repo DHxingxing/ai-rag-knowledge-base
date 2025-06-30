@@ -24,7 +24,6 @@ public class ChatInfoReq {
         String systemPrompt = ragPromptConfig.getSystem().replace("{documents}", documentCollectors);
         String userPrompt = ragPromptConfig.getUser().replace("{question}", chatInfoReq.getMessage());
         String fullPrompt = systemPrompt + "\n\n" + userPrompt;
-
         return ChatInfoReq.builder()
                 .model(chatInfoReq.getModel())
                 .message(fullPrompt)
