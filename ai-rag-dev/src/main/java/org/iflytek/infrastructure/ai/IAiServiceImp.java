@@ -13,7 +13,9 @@ import reactor.core.publisher.Flux;
 
 @Service
 public class IAiServiceImp implements IAiService {
-
+    /**
+     * 当你在 IAiServiceImp 里写 @Resource private OllamaChatClient ollamaChatClient; 时，Spring 会自动去容器里找类型为 OllamaChatClient 的 Bean。
+     */
     @Resource
     private OllamaChatClient ollamaChatClient;
 
