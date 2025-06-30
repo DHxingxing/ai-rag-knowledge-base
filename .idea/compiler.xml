@@ -7,8 +7,8 @@
         <sourceOutputDir name="target/generated-sources/annotations" />
         <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
         <outputRelativeToContentRoot value="true" />
-        <module name="ai-rag-dev" />
         <module name="ai-rag-dev-fronted" />
+        <module name="ai-rag-dev" />
       </profile>
     </annotationProcessing>
     <bytecodeTargetLevel>
